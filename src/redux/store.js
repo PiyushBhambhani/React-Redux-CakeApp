@@ -1,10 +1,11 @@
-import { legacy_createStore } from "redux";
+import { legacy_createStore , applyMiddleware} from "redux";
+
 // notice here now we are using the es6 syntax
-import cakeReducer from "./cake/cakeReducer";
+// now instead of importing cake reducer just import rootreducer
+// and attach the reducer to store :)
+import rootReducer from "./rootReducer";
 
-
-const store = legacy_createStore(cakeReducer);
-
+const store = legacy_createStore(rootReducer);
 export default store
 
 // now we have created a store
