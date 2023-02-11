@@ -4,8 +4,9 @@ import logger from 'redux-logger'
 // now instead of importing cake reducer just import rootreducer
 // and attach the reducer to store :)
 import rootReducer from "./rootReducer";
+import { composeWithDevTools } from '@redux-devtools/extension';
 
-const store = legacy_createStore(rootReducer,applyMiddleware(logger));
+const store = legacy_createStore(rootReducer,composeWithDevTools(applyMiddleware(logger)));
 export default store
 
 // now we have created a store
