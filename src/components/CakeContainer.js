@@ -27,7 +27,7 @@ function CakeContainer(props){
 // takes state and returns object
 const mapStateToProps= state =>{
     return {
-        numOfCakes: state.numOfCakes
+        numOfCakes: state.cake.numOfCakes
     }
 }
 
