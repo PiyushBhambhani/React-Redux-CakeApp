@@ -3,6 +3,7 @@ import CakeContainer from './components/CakeContainer';
 import {Provider} from 'react-redux'
 import store from './redux/store';
 import HooksCakeContainer from './components/HooksCakeContainer';
+import HooksIceCreamContainer from './components/HooksIceCreamContainer';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <HooksCakeContainer/>
         <CakeContainer />
+        <HooksIceCreamContainer />
       </div>
     </Provider>
   );
