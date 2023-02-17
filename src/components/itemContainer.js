@@ -2,11 +2,13 @@
 // so this container can be reused for both cakes n icecreams
 
 import React from "react";
-import { Connect } from "react-redux";
+import { connect } from "react-redux";
+import { buyCake, buyIceCream } from "../redux";
 function ItemContainer(props){
     return(
         <div>
             <h2>Item - {props.numOfItems}</h2>
+            <button onClick={props.buyItems} > Buy Item</button>
         </div>
     )
 }
@@ -21,9 +23,9 @@ function ItemContainer(props){
 
 const mapStateToProps=(state,ownProps)=>{
 
-const itemState= ownProps.cake 
+const itemState= ownProps.cake
     ? state.cake.numOfCakes 
-    : state.iceCream.numOfIceCreams
+    : state.iceCream.numOfIceCream
 
     return{
         numOfItems: itemState
@@ -36,5 +38,21 @@ const itemState= ownProps.cake
 // here we just wanted to explain aout the second parameter, how to use this can be depended on  requirement.
 
 
+//similarly we can do the dispatch based on owncomponent Props 
+const mapDispatchToProps=(dispatch,ownProps)=>{
+    const dispatchFunction= ownProps.cake
+    ? ()=>{ dispatch(buyCake())}
+    : ()=>{ dispatch(buyIceCream())}
 
-export default connect(mapStateToProps)(ItemContainer);
+    return{
+        buyItems: dispatchFunction
+    }
+}
+//Note : Both above functions "returns" an object
+//Note: in some cases, we only need to
+//connect the dispatch in components not any state to show
+// there we call connect with null as first arguement.
+//as below example
+// export default connect(null, mapDispatchToProps)(ItemContainer)
+
+export default connect(mapStateToProps,mapDispatchToProps)(ItemContainer);
