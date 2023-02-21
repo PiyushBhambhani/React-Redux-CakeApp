@@ -6,7 +6,9 @@ import logger from 'redux-logger'
 import rootReducer from "./rootReducer";
 import { composeWithDevTools } from '@redux-devtools/extension';
 
-const store = legacy_createStore(rootReducer,composeWithDevTools(applyMiddleware(logger)));
+import thunk from "redux-thunk";
+
+const store = legacy_createStore(rootReducer,composeWithDevTools(applyMiddleware(logger,thunk)));
 export default store
 
 // now we have created a store
